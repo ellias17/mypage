@@ -69,8 +69,8 @@
         }
 
         .mypost {
-           
-            width:500px;
+
+            width: 500px;
             margin: 20px auto 20px auto;
             padding: 20px 20px 20px 20px;
 
@@ -83,21 +83,34 @@
             align-items: center;
             justify-content: center;
 
-            margin-top:20px;
+            margin-top: 20px;
 
         }
-        
-        .mybtn > button {
-            margin-right:10px;
+
+        .mybtn>button {
+            margin-right: 10px;
 
         }
     </style>
+    <script>
+
+        $(document).ready(function () {
+            fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
+        
+                let temp = data['temp']
+                $('#temp').text(temp)
+            })
+        })
+                
+            
+    </script>
 </head>
 
 <body>
     <div class="mytitle">
         <h1>내 생의 최고의 영화들</h1>
-        <button>영화 기록하기</button>
+        <div>현재 서울의 날씨 : <span id="temp">20</span>도</div>
+        <button onclick="hey()">영화 기록하기</button>
     </div>
     <div class="mypost">
         <div class="form-floating mb-3">
@@ -118,7 +131,7 @@
             </select>
         </div>
 
-    
+
 
         <div class="form-floating">
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
@@ -185,4 +198,6 @@
         </div>
     </div>
 </body>
+
+
 
